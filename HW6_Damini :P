@@ -1,0 +1,121 @@
+"""
+Author: Damini Gopal
+Serial Numbers: 33
+Spring 2020 - CS 1342 - 251
+Homework Number 6
+Due Date : April, 29th 2020
+"""
+
+num = int() #int input that tells the exclusive lower bound of the range
+                  #cannot be negative, more than, or equal to num2
+
+total = 0   #str that formats the lists of numbers
+
+import math
+
+print("Number Manipualations\n")
+num = int(input("Enter a Positive integer Number > 0 --->   " ))
+    
+def currency_calculation(counter,end): #numerical calculation of how many quarters
+                                       #dimes, nickels, and pennies are a number of dollars
+    print("\nCurrency Calculation\n", end,"cent/s is equivalent to: \n")
+    if (end < 25):
+        print("\n0 quarter/s")
+    elif (end%25 == 0):
+        print( "\n", math.floor((end/25)), "quarters") 
+    else: 
+        while(end/25 != 0 and end > 25):
+            counter += 1
+            end -= 25
+        print("\n", counter, " quarter/s")
+
+    counter = 0 
+    if (end < 10):
+        print("0 dime/s")
+    elif (end%10 == 0):
+        print( math.floor((end/10)), "dime/s") 
+    else: 
+        while(end/10 != 0 and end > 10):
+            counter += 1
+            end -= 10
+        print(counter, " dime/s")
+
+    counter = 0
+    if (end < 5):
+        print("0 nickels/s")
+    elif (end%5 == 0):
+        print( math.floor((end/5)), "nickel/s") 
+    else: 
+        while(end/5 != 0 and end > 5):
+            counter += 1
+            end -= 5
+        print(counter, " nickel/s")
+        print(end, " cent/s")
+
+def person_age(age): #calculation of months, days, minutes, and seconds for a
+                     #given number of years 
+    print("\nAge Calculation\n") 
+    print("Assuming that you are", age, " year's old, then")
+    print("You are", age*12, " months old")
+    print("You are", age*365, " days old")
+    print("You are", age*24*365, " hours old")
+    print("You are", age*24*365*60, "minutes old")
+    print("You are", age*24*365*60*60, "seconds old\n")
+
+def number_seperation(age):
+    print("Separating digits for the integer ", age)
+    words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    number = [age]
+    digits = [int(x) if x.isdigit() else x  
+          for z in number for x in str(z)]
+    for i in digits:
+        print(i, end=" ")
+
+    place = 0 
+    index = len(digits)
+    print("\n")
+    
+    while (place != index):
+        print(words[int(digits[place])], end=" ")
+        place += 1
+    
+    
+def sum_of_digits(age): #seperation of a number into its digits
+    print("\n\nSum of its digits for the integer", age)
+    input = [age]
+    input = int(input[0])
+    output = []
+
+    while input>0:
+        rem = input % 10
+        input = int(input / 10)
+        output.append(rem)
+
+    sum_digits = sum(output)
+    print(sum_digits)
+
+
+def distinct_sequence(age): #distinct sequence from a given starting value 
+    print("\nThe sequence of distinct numbers starting at ", age, " is")
+    format_string = ""
+    while (age != 1):
+        if (age % 2 == 0):
+            age /= 2
+            format_string += str(math.floor(age)) + " " 
+        else:
+            age *= 3
+            age += 1
+            format_string += str(math.floor(age)) + " "
+    print(format_string[:len(format_string)-1])
+    
+if (num < 0):
+    print("*** Error --- invalid input   ", num, "\nre-run the app & use a positive number > 0")
+else:
+    currency_calculation(total, num)
+    person_age(num)
+    number_seperation(num)
+    sum_of_digits(num)
+    distinct_sequence(num)
+    
+
+print("\nImplemented by Damini Gopal\nApril 29th, 2020")
