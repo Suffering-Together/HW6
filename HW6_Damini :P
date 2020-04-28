@@ -9,12 +9,12 @@ Due Date : April, 29th 2020
 num = int() #int input that tells the exclusive lower bound of the range
                   #cannot be negative, more than, or equal to num2
 
-total = 0   #str that formats the lists of numbers
+total = 0   #int that is used as the end value in currency_calculations
 
 import math
 
 print("Number Manipualations\n")
-num = int(input("Enter a Positive integer Number > 0 --->   " ))
+num = int(input("Enter a Positive integer Number > 0 --->   " )) #inital input value from user
     
 def currency_calculation(counter,end): #numerical calculation of how many quarters
                                        #dimes, nickels, and pennies are a number of dollars
@@ -62,7 +62,8 @@ def person_age(age): #calculation of months, days, minutes, and seconds for a
     print("You are", age*24*365*60, "minutes old")
     print("You are", age*24*365*60*60, "seconds old\n")
 
-def number_seperation(age):
+def number_seperation(age): #function that seperates a number 
+                            #into its individual digits
     print("Separating digits for the integer ", age)
     words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
     number = [age]
@@ -80,7 +81,8 @@ def number_seperation(age):
         place += 1
     
     
-def sum_of_digits(age): #seperation of a number into its digits
+def sum_of_digits(age): #function that calcuates the sum 
+                        #of the digits of a number
     print("\n\nSum of its digits for the integer", age)
     input = [age]
     input = int(input[0])
@@ -95,7 +97,8 @@ def sum_of_digits(age): #seperation of a number into its digits
     print(sum_digits)
 
 
-def distinct_sequence(age): #distinct sequence from a given starting value 
+def distinct_sequence(age): #fucntion that creates a 
+                            #distinct sequence from a given starting value 
     print("\nThe sequence of distinct numbers starting at ", age, " is")
     format_string = ""
     while (age != 1):
@@ -108,7 +111,7 @@ def distinct_sequence(age): #distinct sequence from a given starting value
             format_string += str(math.floor(age)) + " "
     print(format_string[:len(format_string)-1])
     
-if (num < 0):
+if (num < 0): #checks if the input value is valid
     print("*** Error --- invalid input   ", num, "\nre-run the app & use a positive number > 0")
 else:
     currency_calculation(total, num)
